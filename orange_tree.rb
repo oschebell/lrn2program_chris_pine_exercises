@@ -12,7 +12,7 @@ FULL_MATURITY = 4
   end
 
   def one_year_passes
-    if @alive == true
+    if @alive
       @age += 1
         if @age >= MAX_AGE
           death
@@ -26,16 +26,23 @@ FULL_MATURITY = 4
   end
 
   def count_oranges
-    puts "Your tree has #{@oranges} oranges!"
+    if @alive
+      puts "Your tree has #{@oranges} oranges!"
+    else
+      puts "A dead tree has no oranges."
+    end
   end
 
   def pick_fruit
-    if @oranges > 0
-      @oranges -= 1
-      puts "You picked an orange. It was delicious!"
+    if @alive
+      if @oranges > 0
+        @oranges -= 1
+        puts "You picked an orange. It was delicious!"
+      else
+        puts "There are no oranges left. You will need to wait until next year."
+      end
     else
-      puts "There are no oranges left. You will need to wait until next year."
-    end
+      puts "A dead tree has no fruit to pick."
   end
 
 private
